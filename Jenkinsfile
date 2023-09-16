@@ -23,7 +23,7 @@ pipeline {
     stage("build"){
       steps{
         echo "build"
-        sh "docker build -t todo -f Dockerfile ."
+        sh "docker build -t todo ."
       }
     }
     stage("deploy"){
