@@ -27,7 +27,7 @@ pipeline {
       }
     }
     stage("deploy"){
-      stpes{
+      steps{
         echo "deploy"
         sh "docker run -d -p 8000:8000 todo"
       }
