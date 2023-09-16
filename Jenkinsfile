@@ -17,7 +17,7 @@ pipeline {
     stage("copy"){
       steps{
         echo "copy file"
-        sh "cp -r todos/templates/todos/* /var/www/html/"
+        sh "cp -r todo_project/todos/templates/todos/* /var/www/html/"
       }
     }
     stage("build"){
