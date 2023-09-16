@@ -10,7 +10,7 @@ pipeline {
     stage("clone"){
       steps{
         echo "cloning the code"
-        sh "git clone -b master "
+        sh "git clone -b develop https://github.com/Venugopala1234/todo_project.git"
         cd todo_project/
       }
     }
