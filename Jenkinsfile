@@ -5,7 +5,6 @@ pipeline {
       steps{
         echo "clean"
         sh "rm -rf *"
-        sh "rm -rf /var/www/html/"
       }
     }
     stage("clone"){
