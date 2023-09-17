@@ -23,8 +23,9 @@ pipeline {
     stage("build"){
       steps{
         echo "build"
-        sh "chown jenkins:jenkins /home/ubuntu/todo_project/"
-        sh "docker build -t todo . -f /home/ubuntu/todo_project/"
+       script {
+                    dockerImage = docker.build('DOCKER_IMAGE_NAME')
+                }
       }
     }
     stage("deploy"){
