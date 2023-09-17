@@ -23,8 +23,7 @@ pipeline {
     stage("build"){
       steps{
         echo "build"
-        sh "chmod 777 todo_project/"
-        sh "docker build -t todo ."
+        sh "docker build -t todo . -f /home/ubuntu/todo_project/"
       }
     }
     stage("deploy"){
