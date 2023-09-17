@@ -31,7 +31,9 @@ pipeline {
     stage("deploy"){
       steps{
         echo "deploy"
-        sh "docker run -d -p 8000:8000 todo"
+        script {
+                    dockerImage.inside('-p 8080:80 --name DOCKER_CONTAINER_NAME') 
+                    }
       }
     }
   }
