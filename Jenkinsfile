@@ -3,39 +3,11 @@ pipeline {
   stages{
     stage("clear"){
       steps{
-        echo "clean"
-        sh "rm -rf *"
-      }
-    }
-    stage("clone"){
-      steps{
-        echo "cloning the code"
-        sh "git clone -b develop https://github.com/Venugopala1234/todo_project.git"
-        sh "cd todo_project/"
-      }
-    }
-    stage("copy"){
-      steps{
-        echo "copy file"
-        sh "cp -r todo_project/todos/templates/todos/* /var/www/html/"
-        sh "ls /var/www/html/"        
-      }
-    }
-    stage("build"){
-      steps{
-        echo "build"
-       script {
-                    sh "cd /home/ubuntu/todo_project"
-                    dockerImage = docker.build('todo')
-                }
-      }
-    }
-    stage("deploy"){
-      steps{
-        echo "deploy"
-        script {
-                    dockerImage.inside('-p 8080:80 --name DOCKER_CONTAINER_NAME') 
-                    }
+        sh 'rm -rf todo_project'
+        sh 'git clone https://github.com/Venugopala1234/todo_project.git -b develop'
+        sh 'cd todo_project'
+        sh 'docker build -t todo .'
+        sh 'docker run -d -p 8000:8000 todo'
       }
     }
   }
