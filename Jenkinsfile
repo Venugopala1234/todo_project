@@ -25,6 +25,7 @@ pipeline {
       steps{
         echo "build"
        script {
+                    sh "cd /home/ubuntu/todo_project"
                     dockerImage = docker.build('todo')
                 }
       }
